@@ -1,7 +1,7 @@
 package com.mdgd.j_commons.ui.main
 
 import androidx.fragment.app.Fragment
-import com.mdgd.commons.support.v7.fragment.HostActivity
+import com.mdgd.j_commons.fragment.HostActivity
 import com.mdgd.j_commons.ui.main.fr.quackes.EarthQuakesFragment
 import com.mdgd.j_commons.ui.main.fr.splash.SplashFragment
 

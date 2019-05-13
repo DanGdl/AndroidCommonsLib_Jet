@@ -24,6 +24,8 @@ android {
 }
 
 dependencies {
+    implementation project(':contract')
     implementation project(':utilities')
-    implementation "androidx.annotation:annotation:$androidx"
+
+    implementation "androidx.appcompat:appcompat:$androidx"
 }

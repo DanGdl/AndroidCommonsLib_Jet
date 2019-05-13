@@ -1,6 +1,6 @@
 package com.mdgd.j_commons.ui.main
 
-import com.mdgd.commons.support.v7.mvp.Presenter
+import com.mdgd.j_commons.mvp.Presenter
 
 /**
  * Created by max

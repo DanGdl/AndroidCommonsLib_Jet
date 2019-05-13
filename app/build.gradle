@@ -70,7 +70,7 @@ dependencies {
 
     implementation project(':bus')
     implementation project(':capture')
-    implementation project(':commons-support-v7')
+    implementation project(':commons')
     implementation project(':contract')
     implementation project(':foreground')
     implementation project(':injection')

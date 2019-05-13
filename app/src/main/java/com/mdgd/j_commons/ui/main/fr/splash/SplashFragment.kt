@@ -1,7 +1,7 @@
 package com.mdgd.j_commons.ui.main.fr.splash
 
 import com.mdgd.j_commons.R
-import com.mdgd.commons.support.v7.fragment.HostedFragment
+import com.mdgd.j_commons.fragment.HostedFragment
 
 /**
  * Created by Max

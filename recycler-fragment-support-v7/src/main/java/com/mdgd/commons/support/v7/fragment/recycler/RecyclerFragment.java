@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mdgd.commons.contract.fragment.FragmentContract;
 import com.mdgd.commons.recycler.CommonRecyclerAdapter;
-import com.mdgd.commons.support.v7.fragment.HostedFragment;
+import com.mdgd.j_commons.fragment.HostedFragment;
 
 /**
  * Created by Max
