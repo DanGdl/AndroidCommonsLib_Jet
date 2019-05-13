@@ -13,6 +13,7 @@ import retrofit2.Response;
  * Created by Owner
  * on 05/02/2019.
  */
+@SuppressWarnings("unchecked")
 public class RetroCallbackImpl<T, X> implements Callback<T> {
 
     private final ITransformer<T, X> transform;

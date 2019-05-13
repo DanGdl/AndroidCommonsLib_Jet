@@ -1,4 +1,4 @@
-package com.mdgd.commons_jet;
+package com.mdgd.j_commons;
 
 import org.junit.Test;
 
