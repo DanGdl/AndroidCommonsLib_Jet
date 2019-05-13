@@ -77,7 +77,7 @@ dependencies {
     implementation project(':permissions')
     implementation project(':prefs')
     implementation project(':recycler')
-    implementation project(':recycler-fragment-support-v7')
+    implementation project(':recycler_fragment')
     implementation project(':services')
     implementation project(':sqlite')
     implementation project(':tasks')
