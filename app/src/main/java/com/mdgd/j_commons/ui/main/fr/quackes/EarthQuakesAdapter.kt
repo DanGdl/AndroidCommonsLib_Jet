@@ -5,10 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.mdgd.j_commons.R
-import com.mdgd.j_commons.databinding.QuakeDetailsBinding
 import com.mdgd.j_commons.dto.Quake
-import com.mdgd.commons.recycler.CommonRecyclerAdapter
-import com.mdgd.commons.recycler.CommonViewHolder
 import java.text.SimpleDateFormat
 import java.util.*
 

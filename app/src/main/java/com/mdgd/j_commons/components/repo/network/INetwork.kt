@@ -1,7 +1,7 @@
 package com.mdgd.j_commons.components.repo.network
 
-import com.mdgd.j_commons.dto.Quake
 import com.mdgd.commons.result.ICallback
+import com.mdgd.j_commons.dto.Quake
 import java.util.*
 
 /**

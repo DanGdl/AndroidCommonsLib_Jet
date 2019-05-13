@@ -24,7 +24,7 @@ import com.mdgd.j_commons.progress.ProgressDialogWrapper;
  */
 
 public abstract class HostedFragment<X extends FragmentContract.IPresenter, Y extends FragmentContract.IHost>
-        extends Fragment implements FragmentContract.IFragment, FragmentContract.IView {
+        extends Fragment implements FragmentContract.IView {
     protected final X presenter;
 
     private boolean hasProgress = false;
@@ -122,4 +122,15 @@ public abstract class HostedFragment<X extends FragmentContract.IPresenter, Y ex
     protected boolean hasPermissions(String... permissions) {
         return PermissionsUtil.checkPermissions(getActivity(), permissions);
     }
+
+    // @Override
+    // public void showSnack(int msgRes){
+    //     Snackbar.make(view, "Hello Android 7", Snackbar.LENGTH_LONG).show();
+    // }
+    // @Override
+    // public void showSnack(int msgRes, String query){
+    // }
+    // @Override
+    // public void showSnack(int msgRes, String query, int action){
+    // }
 }

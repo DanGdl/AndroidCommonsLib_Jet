@@ -4,9 +4,9 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import com.mdgd.commons.sqlite.CursorParser
 import com.mdgd.j_commons.components.Constants
 import com.mdgd.j_commons.dto.Quake
-import com.mdgd.commons.sqlite.CursorParser
 import java.util.*
 import java.util.concurrent.locks.ReentrantReadWriteLock
 

@@ -1,8 +1,8 @@
 package com.mdgd.j_commons.components.repo.prefs
 
 import android.content.Context
-import com.mdgd.j_commons.components.Constants
 import com.mdgd.commons.prefs.BasicPrefsImpl
+import com.mdgd.j_commons.components.Constants
 
 /**
  * Created by Max

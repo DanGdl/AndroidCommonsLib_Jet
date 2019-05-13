@@ -1,14 +1,14 @@
 package com.mdgd.j_commons.components.repo
 
 import android.util.Log
+import com.mdgd.commons.result.ICallback
+import com.mdgd.commons.result.Result
 import com.mdgd.j_commons.components.Constants
 import com.mdgd.j_commons.components.repo.db.IDataBase
 import com.mdgd.j_commons.components.repo.network.INetwork
 import com.mdgd.j_commons.components.repo.prefs.IPrefs
 import com.mdgd.j_commons.dto.Quake
 import com.mdgd.j_commons.dto.SearchParams
-import com.mdgd.commons.result.ICallback
-import com.mdgd.commons.result.Result
 import java.util.*
 
 /**

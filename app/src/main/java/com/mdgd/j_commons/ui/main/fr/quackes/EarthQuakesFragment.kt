@@ -16,9 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mdgd.j_commons.R
 import com.mdgd.j_commons.dto.Quake
-import com.mdgd.commons.recycler.CommonRecyclerAdapter
-import com.mdgd.commons.support.v7.fragment.recycler.SwipeRecyclerFragment
-import com.mdgd.j_commons.databinding.FragmentRecyclerBinding
 import java.util.*
 
 /**

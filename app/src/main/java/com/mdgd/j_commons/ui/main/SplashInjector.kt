@@ -1,8 +1,8 @@
 package com.mdgd.j_commons.ui.main
 
+import com.mdgd.commons.injection.IInjector
 import com.mdgd.j_commons.QuakesApp
 import com.mdgd.j_commons.components.IComponentProvider
-import com.mdgd.commons.injection.IInjector
 
 /**
  * Created by Owner

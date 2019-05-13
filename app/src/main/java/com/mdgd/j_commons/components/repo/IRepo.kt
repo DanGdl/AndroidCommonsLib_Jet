@@ -1,9 +1,9 @@
 package com.mdgd.j_commons.components.repo
 
+import com.mdgd.commons.result.ICallback
 import com.mdgd.j_commons.components.repo.prefs.IPrefs
 import com.mdgd.j_commons.dto.Quake
 import com.mdgd.j_commons.dto.SearchParams
-import com.mdgd.commons.result.ICallback
 
 /**
  * Created by Max
