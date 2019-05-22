@@ -26,6 +26,10 @@ public abstract class HostActivity<T extends ViewContract.IPresenter> extends Co
         super.onCreate(savedInstanceState);
 
         container = findViewById(getFragmentContainerId());
+        setupFirstFragment(savedInstanceState);
+    }
+
+    protected void setupFirstFragment(Bundle savedInstanceState) {
         if (savedInstanceState == null) addFirstFragment();
         else {
             final List<Fragment> fragments = getSupportFragmentManager().getFragments();
