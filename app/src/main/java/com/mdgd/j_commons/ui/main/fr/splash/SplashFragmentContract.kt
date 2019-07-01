@@ -13,5 +13,5 @@ class SplashFragmentContract {
 
     interface IHost : FragmentContract.IHost
 
-    interface IPresenter : FragmentContract.IPresenter
+    interface IPresenter : FragmentContract.IPresenter<SplashFragmentContract.IView>
 }

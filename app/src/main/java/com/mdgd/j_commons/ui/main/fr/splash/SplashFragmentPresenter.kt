@@ -1,3 +1,5 @@
 package com.mdgd.j_commons.ui.main.fr.splash
 
-class SplashFragmentPresenter(view: SplashFragmentContract.IView) : SplashFragmentContract.IPresenter
+import com.mdgd.j_commons.fragment.FragmentPresenter
+
+class SplashFragmentPresenter : FragmentPresenter<SplashFragmentContract.IView>(), SplashFragmentContract.IPresenter

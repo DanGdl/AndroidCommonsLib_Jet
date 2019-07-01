@@ -1,4 +1,4 @@
-package com.mdgd.j_commons.components.repo.prefs
+package com.mdgd.j_commons.core.repo.prefs
 
 /**
  * Created by Max

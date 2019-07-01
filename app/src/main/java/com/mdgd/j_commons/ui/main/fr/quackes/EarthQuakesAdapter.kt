@@ -5,7 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.mdgd.j_commons.R
+import com.mdgd.j_commons.databinding.QuakeDetailsBinding
 import com.mdgd.j_commons.dto.Quake
+import com.mdgd.j_commons.recycler.CommonRecyclerAdapter
+import com.mdgd.j_commons.recycler.CommonViewHolder
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -41,7 +44,7 @@ class EarthQuakesAdapter internal constructor(context: Context, listener: Common
         }
 
         override fun bindItem(item: Quake?, position: Int) {
-            mBinding.quakeTime.text = mSDF.format(item?.date)
+            mBinding.quakeTime.text = mSDF.format(item?.date!!)
             mBinding.quake = item
         }
     }

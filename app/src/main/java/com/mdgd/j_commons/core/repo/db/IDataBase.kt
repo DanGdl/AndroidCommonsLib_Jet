@@ -1,4 +1,4 @@
-package com.mdgd.j_commons.components.repo.db
+package com.mdgd.j_commons.core.repo.db
 
 import com.mdgd.j_commons.dto.Quake
 

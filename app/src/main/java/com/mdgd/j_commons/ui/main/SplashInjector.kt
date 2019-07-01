@@ -2,7 +2,7 @@ package com.mdgd.j_commons.ui.main
 
 import com.mdgd.commons.injection.IInjector
 import com.mdgd.j_commons.QuakesApp
-import com.mdgd.j_commons.components.IComponentProvider
+import com.mdgd.j_commons.core.IComponentProvider
 
 /**
  * Created by Owner
@@ -13,6 +13,6 @@ class SplashInjector : IInjector<SplashScreenContract.IPresenter, SplashScreenCo
     private val provider: IComponentProvider = QuakesApp.instance!!.provider
 
     override fun createPresenter(view: SplashScreenContract.IView): SplashScreenContract.IPresenter {
-        return SplashPresenter(view)
+        return SplashPresenter()
     }
 }

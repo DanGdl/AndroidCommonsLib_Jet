@@ -1,6 +1,6 @@
-package com.mdgd.j_commons.components.repo.network
+package com.mdgd.j_commons.core.repo.network
 
-import com.mdgd.j_commons.components.repo.network.schemas.QuakesSchema
+import com.mdgd.j_commons.core.repo.network.schemas.QuakesSchema
 
 import retrofit2.Call
 import retrofit2.http.GET

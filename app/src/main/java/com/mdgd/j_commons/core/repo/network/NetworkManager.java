@@ -1,11 +1,11 @@
-package com.mdgd.j_commons.components.repo.network;
+package com.mdgd.j_commons.core.repo.network;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mdgd.commons.result.ICallback;
 import com.mdgd.commons.retrofit_support.BasicNetwork;
-import com.mdgd.j_commons.components.repo.network.schemas.QuakeSchema;
-import com.mdgd.j_commons.components.repo.network.schemas.QuakesSchema;
+import com.mdgd.j_commons.core.repo.network.schemas.QuakeSchema;
+import com.mdgd.j_commons.core.repo.network.schemas.QuakesSchema;
 import com.mdgd.j_commons.dto.Quake;
 
 import org.jetbrains.annotations.NotNull;

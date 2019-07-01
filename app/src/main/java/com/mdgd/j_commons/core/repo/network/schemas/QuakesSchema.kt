@@ -1,4 +1,4 @@
-package com.mdgd.j_commons.components.repo.network.schemas
+package com.mdgd.j_commons.core.repo.network.schemas
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

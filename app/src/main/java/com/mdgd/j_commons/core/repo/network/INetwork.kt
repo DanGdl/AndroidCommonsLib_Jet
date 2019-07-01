@@ -1,4 +1,4 @@
-package com.mdgd.j_commons.components.repo.network
+package com.mdgd.j_commons.core.repo.network
 
 import com.mdgd.commons.result.ICallback
 import com.mdgd.j_commons.dto.Quake

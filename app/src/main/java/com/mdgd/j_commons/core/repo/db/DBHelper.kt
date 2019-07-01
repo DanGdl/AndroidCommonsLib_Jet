@@ -1,4 +1,4 @@
-package com.mdgd.j_commons.components.repo.db
+package com.mdgd.j_commons.core.repo.db
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase

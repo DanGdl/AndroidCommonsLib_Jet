@@ -15,7 +15,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mdgd.j_commons.R
+import com.mdgd.j_commons.databinding.FragmentRecyclerBinding
 import com.mdgd.j_commons.dto.Quake
+import com.mdgd.j_commons.recycler.CommonRecyclerAdapter
+import com.mdgd.j_commons.recycler_fragment.SwipeRecyclerFragment
 import java.util.*
 
 /**
@@ -131,11 +134,11 @@ class EarthQuakesFragment : SwipeRecyclerFragment<QuakesFragmentContract.IPresen
                     0, 0, true).show()
         } else if (id == R.id.fromDate) {
             val calendar = Calendar.getInstance()
-            DatePickerDialog(activity, { _: DatePicker, y: Int, m: Int, d: Int -> binding?.searchParams?.fromDate?.text = String.format(Locale.getDefault(), "%1$2d.%2$2d.%3$4d", d, m, y) },
+            DatePickerDialog(activity!!, { _: DatePicker, y: Int, m: Int, d: Int -> binding?.searchParams?.fromDate?.text = String.format(Locale.getDefault(), "%1$2d.%2$2d.%3$4d", d, m, y) },
                     calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show()
         } else if (id == R.id.toDate) {
             val calendar = Calendar.getInstance()
-            DatePickerDialog(activity, { _: DatePicker, y: Int, m: Int, d: Int -> binding?.searchParams?.toDate?.text = String.format(Locale.getDefault(), "%1$2d.%2$2d.%3$4d", d, m, y) },
+            DatePickerDialog(activity!!, { _: DatePicker, y: Int, m: Int, d: Int -> binding?.searchParams?.toDate?.text = String.format(Locale.getDefault(), "%1$2d.%2$2d.%3$4d", d, m, y) },
                     calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show()
         }
     }

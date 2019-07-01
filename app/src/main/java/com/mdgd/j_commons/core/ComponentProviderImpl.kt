@@ -1,15 +1,15 @@
-package com.mdgd.j_commons.components
+package com.mdgd.j_commons.core
 
 import android.content.Context
 import com.mdgd.commons.injection.BasicProvider
-import com.mdgd.j_commons.components.repo.IRepo
-import com.mdgd.j_commons.components.repo.Repo
-import com.mdgd.j_commons.components.repo.db.IDataBase
-import com.mdgd.j_commons.components.repo.db.SQLiteManager
-import com.mdgd.j_commons.components.repo.network.INetwork
-import com.mdgd.j_commons.components.repo.network.NetworkManager
-import com.mdgd.j_commons.components.repo.prefs.IPrefs
-import com.mdgd.j_commons.components.repo.prefs.PrefsImp
+import com.mdgd.j_commons.core.repo.IRepo
+import com.mdgd.j_commons.core.repo.Repo
+import com.mdgd.j_commons.core.repo.db.IDataBase
+import com.mdgd.j_commons.core.repo.db.SQLiteManager
+import com.mdgd.j_commons.core.repo.network.INetwork
+import com.mdgd.j_commons.core.repo.network.NetworkManager
+import com.mdgd.j_commons.core.repo.prefs.IPrefs
+import com.mdgd.j_commons.core.repo.prefs.PrefsImp
 import java.lang.ref.WeakReference
 
 class ComponentProviderImpl(val ctx: Context) : BasicProvider(), IComponentProvider {

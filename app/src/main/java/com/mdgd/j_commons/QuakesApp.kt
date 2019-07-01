@@ -1,8 +1,8 @@
 package com.mdgd.j_commons
 
 import android.app.Application
-import com.mdgd.j_commons.components.ComponentProviderImpl
-import com.mdgd.j_commons.components.IComponentProvider
+import com.mdgd.j_commons.core.ComponentProviderImpl
+import com.mdgd.j_commons.core.IComponentProvider
 
 /**
  * Created by Max

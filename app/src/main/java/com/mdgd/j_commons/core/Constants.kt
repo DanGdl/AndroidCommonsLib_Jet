@@ -1,4 +1,4 @@
-package com.mdgd.j_commons.components
+package com.mdgd.j_commons.core
 
 class Constants {
     companion object {

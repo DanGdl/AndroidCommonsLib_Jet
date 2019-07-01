@@ -1,7 +1,7 @@
-package com.mdgd.j_commons.components.repo
+package com.mdgd.j_commons.core.repo
 
 import com.mdgd.commons.result.ICallback
-import com.mdgd.j_commons.components.repo.prefs.IPrefs
+import com.mdgd.j_commons.core.repo.prefs.IPrefs
 import com.mdgd.j_commons.dto.Quake
 import com.mdgd.j_commons.dto.SearchParams
 

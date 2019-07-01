@@ -2,13 +2,13 @@ package com.mdgd.j_commons.ui.main.fr.quackes
 
 import com.mdgd.commons.result.ICallback
 import com.mdgd.j_commons.R
-import com.mdgd.j_commons.components.repo.IRepo
+import com.mdgd.j_commons.core.repo.IRepo
 import com.mdgd.j_commons.dto.SearchParams
 import com.mdgd.j_commons.fragment.FragmentPresenter
 import java.util.*
 
-class QuakesFragmentPresenter(view: QuakesFragmentContract.IView, private val repo: IRepo) :
-        FragmentPresenter<QuakesFragmentContract.IView>(view), QuakesFragmentContract.IPresenter {
+class QuakesFragmentPresenter(private val repo: IRepo) :
+        FragmentPresenter<QuakesFragmentContract.IView>(), QuakesFragmentContract.IPresenter {
 
     override fun searchQuakes(searchParams: SearchParams?) {
         if (searchParams == null) {
