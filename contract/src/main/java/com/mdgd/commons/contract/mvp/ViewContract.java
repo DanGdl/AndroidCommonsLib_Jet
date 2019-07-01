@@ -9,7 +9,10 @@ import com.mdgd.commons.contract.progress.IProgressContainer;
  */
 public class ViewContract {
 
-    public interface IPresenter {
+    public interface IPresenter<T extends ViewContract.IView> {
+        void onAttach(T view);
+
+        void onDetach();
     }
 
     public interface IView extends IToast, IProgressContainer {

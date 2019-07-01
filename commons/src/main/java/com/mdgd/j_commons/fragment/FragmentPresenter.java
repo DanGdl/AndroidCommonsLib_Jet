@@ -7,10 +7,16 @@ import com.mdgd.commons.contract.fragment.FragmentContract;
  * on 08/10/2017.
  */
 
-public abstract class FragmentPresenter<T extends FragmentContract.IView> implements FragmentContract.IPresenter {
-    protected final T view;
+public abstract class FragmentPresenter<T extends FragmentContract.IView> implements FragmentContract.IPresenter<T> {
+    protected T view;
 
-    public FragmentPresenter(T view) {
+    @Override
+    public void onAttach(T view) {
         this.view = view;
+    }
+
+    @Override
+    public void onDetach() {
+        view = null;
     }
 }

@@ -25,13 +25,9 @@ public abstract class CommonActivity<T extends ViewContract.IPresenter> extends 
     @Deprecated
     protected boolean onForeground = false;
     private boolean hasProgress = true;
-    protected final T presenter;
+    protected T presenter;
     private IProgressView progress;
     private boolean saveInstanceStateCalled = false;
-
-    public CommonActivity() {
-        presenter = getPresenter();
-    }
 
     protected abstract T getPresenter();
 
@@ -40,6 +36,7 @@ public abstract class CommonActivity<T extends ViewContract.IPresenter> extends 
         super.onCreate(savedInstanceState);
         saveInstanceStateCalled = false;
         setContentView(getLayoutResId());
+        presenter = getPresenter();
     }
 
     protected abstract int getLayoutResId();
@@ -58,6 +55,7 @@ public abstract class CommonActivity<T extends ViewContract.IPresenter> extends 
     @Override
     protected void onStart() {
         super.onStart();
+        presenter.onAttach(this);
         saveInstanceStateCalled = false;
     }
 
@@ -76,6 +74,7 @@ public abstract class CommonActivity<T extends ViewContract.IPresenter> extends 
     @Override
     protected void onStop() {
         hideProgress();
+        presenter.onDetach();
         super.onStop();
     }
 

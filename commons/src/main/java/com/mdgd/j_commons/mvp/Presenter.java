@@ -7,10 +7,16 @@ import com.mdgd.commons.contract.mvp.ViewContract;
  * on 08/10/2017.
  */
 
-public abstract class Presenter<T extends ViewContract.IView> implements ViewContract.IPresenter {
-    protected final T view;
+public abstract class Presenter<T extends ViewContract.IView> implements ViewContract.IPresenter<T> {
+    protected T view;
 
-    public Presenter(T view) {
+    @Override
+    public void onAttach(T view) {
         this.view = view;
+    }
+
+    @Override
+    public void onDetach() {
+        view = null;
     }
 }

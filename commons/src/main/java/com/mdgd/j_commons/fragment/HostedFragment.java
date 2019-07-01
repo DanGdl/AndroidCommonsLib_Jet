@@ -25,13 +25,15 @@ import com.mdgd.j_commons.progress.ProgressDialogWrapper;
 
 public abstract class HostedFragment<X extends FragmentContract.IPresenter, Y extends FragmentContract.IHost>
         extends Fragment implements FragmentContract.IView {
-    protected final X presenter;
+    protected X presenter;
 
     private boolean hasProgress = false;
     private IProgressView progress;
     protected Y host;
 
-    public HostedFragment() {
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         presenter = getPresenter();
     }
 
@@ -42,6 +44,18 @@ public abstract class HostedFragment<X extends FragmentContract.IPresenter, Y ex
     public void onAttach(Context context) {
         super.onAttach(context);
         host = (Y) context;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        presenter.onAttach(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.onDetach();
     }
 
     @Nullable

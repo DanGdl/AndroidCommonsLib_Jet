@@ -18,10 +18,10 @@ public class FragmentContract {
         boolean isFinishing();
     }
 
-    public interface IPresenter {
-    }
+    public interface IPresenter<V extends FragmentContract.IView> {
+        void onAttach(V view);
 
-    public interface IFragment extends IProgressContainer {
+        void onDetach();
     }
 
     public interface IView extends IProgressContainer, IToast {
