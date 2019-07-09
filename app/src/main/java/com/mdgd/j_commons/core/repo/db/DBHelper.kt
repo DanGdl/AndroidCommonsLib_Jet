@@ -36,7 +36,7 @@ class DBHelper internal constructor(context: Context) : SQLiteOpenHelper(context
 
 
         // Database creation sql statement
-        private const val EARTHQUAKES_TABLE_CREATE = "createPresenter table " +
+        private const val EARTHQUAKES_TABLE_CREATE = "create table " +
                 TABLE_QUAKES + "( " +
                 COLUMN_ID + " integer primary key autoincrement, " +
                 COLUMN_QUAKE_ID + " text not null, " +

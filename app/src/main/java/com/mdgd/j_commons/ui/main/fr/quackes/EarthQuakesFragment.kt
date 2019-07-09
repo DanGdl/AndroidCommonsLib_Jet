@@ -83,6 +83,10 @@ class EarthQuakesFragment : SwipeRecyclerFragment<QuakesFragmentContract.IPresen
         binding?.searchParams?.root?.animate()?.translationYBy(TRANSLATE)?.setDuration(1)?.start()
 
         binding?.swipeRefresh?.isRefreshing = true
+    }
+
+    override fun onStart() {
+        super.onStart()
         onRefresh()
     }
 
