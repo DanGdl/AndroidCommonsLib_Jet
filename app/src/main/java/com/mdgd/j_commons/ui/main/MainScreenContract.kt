@@ -8,9 +8,9 @@ import com.mdgd.commons.contract.mvp.ViewContract
  * on 2/2/18.
  */
 
-class SplashScreenContract {
+class MainScreenContract {
 
-    interface IPresenter : ViewContract.IPresenter<SplashScreenContract.IView>
+    interface IPresenter : ViewContract.IPresenter<MainScreenContract.IView>
 
     interface IView : ViewContract.IView
 }

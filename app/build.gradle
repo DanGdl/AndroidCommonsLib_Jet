@@ -48,7 +48,11 @@ dependencies {
     // implementation 'com.squareup.picasso:picasso:2.71828'
 
     // json
-    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    // rx
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.7'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_ver"
@@ -63,6 +67,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'android'
     })
+
     // test lib
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.22.0'

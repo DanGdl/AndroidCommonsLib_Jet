@@ -10,10 +10,10 @@ import com.mdgd.j_commons.ui.main.fr.splash.SplashFragment
  * on 01-May-17.
  */
 
-class SplashActivity : HostActivity<SplashScreenContract.IPresenter>(), SplashScreenContract.IView {
+class MainActivity : HostActivity<MainScreenContract.IPresenter>(), MainScreenContract.IView {
 
-    override fun getPresenter(): SplashScreenContract.IPresenter {
-        return SplashInjector().createPresenter(this)
+    override fun getPresenter(): MainScreenContract.IPresenter {
+        return MainInjector().createPresenter(this)
     }
 
     override fun getFirstFragment(): Fragment {
