@@ -43,7 +43,12 @@ public abstract class HostedFragment<X extends FragmentContract.IPresenter, Y ex
     @SuppressWarnings("unchecked")
     public void onAttach(Context context) {
         super.onAttach(context);
-        host = (Y) context;
+        host = getHostDelegate(context);
+        if (host == null) host = (Y) context;
+    }
+
+    protected Y getHostDelegate(Context context) {
+        return null;
     }
 
     @Override
