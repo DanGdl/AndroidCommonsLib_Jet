@@ -13,7 +13,7 @@ import com.mdgd.j_commons.recycler.CommonRecyclerAdapter;
  * on 02/01/2018.
  */
 
-public abstract class RecyclerFragment<X extends FragmentContract.IPresenter, Y extends FragmentContract.IHost, ITEM>
+public abstract class RecyclerFragment<X extends FragmentContract.Presenter, Y extends FragmentContract.Host, ITEM>
         extends HostedFragment<X, Y> implements CommonRecyclerAdapter.IOnItemClickListener<ITEM> {
 
     protected CommonRecyclerAdapter<ITEM> adapter;

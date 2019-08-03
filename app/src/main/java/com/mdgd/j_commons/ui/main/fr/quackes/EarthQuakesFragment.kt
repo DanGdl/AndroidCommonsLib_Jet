@@ -25,12 +25,11 @@ import java.util.*
  * Created by Max
  * on 01-May-17.
  */
-class EarthQuakesFragment : SwipeRecyclerFragment<QuakesFragmentContract.IPresenter, QuakesFragmentContract.IHost, Quake>(),
-        QuakesFragmentContract.IView, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+class EarthQuakesFragment : SwipeRecyclerFragment<QuakesFragmentContract.Presenter, QuakesFragmentContract.Host, Quake>(),
+        QuakesFragmentContract.View, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     private var binding: FragmentRecyclerBinding? = null
     private var listener: EndlessScrollListener? = null
-    private var currentPage: Int = 0
 
     companion object {
 
@@ -41,7 +40,7 @@ class EarthQuakesFragment : SwipeRecyclerFragment<QuakesFragmentContract.IPresen
         }
     }
 
-    override fun getPresenter(): QuakesFragmentContract.IPresenter {
+    override fun getPresenter(): QuakesFragmentContract.Presenter {
         return QuakesInjector().createPresenter(this)
     }
 
@@ -91,25 +90,11 @@ class EarthQuakesFragment : SwipeRecyclerFragment<QuakesFragmentContract.IPresen
     }
 
     fun onLoadMore() {
-        currentPage++
         presenter?.getNextBulk((adapter as EarthQuakesAdapter).lastDate)
     }
 
     override fun onRefresh() {
-        currentPage = 0
         presenter.checkNewEarthQuakes()
-    }
-
-    override fun updateEarthQuakes(quakes: List<Quake>) {
-        binding?.toolbarInc?.toolbarIcon?.requestFocus()
-        if (currentPage == 0) {
-            listener?.resetState()
-            adapter?.setItems(quakes)
-        } else adapter?.addItems(quakes)
-    }
-
-    override fun decreasePage() {
-        currentPage -= 1
     }
 
     override fun onItemClicked(item: Quake, position: Int) {
@@ -150,5 +135,20 @@ class EarthQuakesFragment : SwipeRecyclerFragment<QuakesFragmentContract.IPresen
     override fun onCheckedChanged(compoundButton: CompoundButton, b: Boolean) {
         val translateDist = if (b) -1 * TRANSLATE else TRANSLATE
         binding?.searchParams?.root?.animate()?.translationYBy(translateDist)?.setDuration(300)?.start()
+    }
+
+    override fun setState(state: QuakesFragmentContract.State) {
+        if(state.showError) showToast(R.string.shit, state.errorMessage)
+
+        if(state.showProgress) showProgress(R.string.empty, R.string.wait_please)
+        else hideProgress()
+
+        if (state.updateData) {
+            binding?.toolbarInc?.toolbarIcon?.requestFocus()
+            if (state.isFirstPage) {
+                listener?.resetState()
+                adapter?.setItems(state.data)
+            } else adapter?.addItems(state.data)
+        }
     }
 }

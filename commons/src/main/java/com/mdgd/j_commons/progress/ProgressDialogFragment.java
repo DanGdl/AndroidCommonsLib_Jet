@@ -23,7 +23,6 @@ public class ProgressDialogFragment extends DialogFragment {
     private static final String KEY_TYPE = "key_type";
     private static final int TYPE_INT = 1;
     private static final int TYPE_STR = 2;
-    private boolean isShowing = false;
 
     public static ProgressDialogFragment newInstance(int titleResId, int msgResId) {
         final Bundle b = new Bundle();
@@ -72,18 +71,7 @@ public class ProgressDialogFragment extends DialogFragment {
     }
 
     public boolean isShowing() {
-        return isShowing;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        isShowing = true;
-    }
-
-    @Override
-    public void onStop() {
-        isShowing = false;
-        super.onStop();
+        final Dialog dialog = getDialog();
+        return dialog != null && dialog.isShowing();
     }
 }

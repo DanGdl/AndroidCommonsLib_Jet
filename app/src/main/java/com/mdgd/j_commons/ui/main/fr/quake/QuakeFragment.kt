@@ -13,8 +13,8 @@ import com.mdgd.j_commons.fragment.HostedFragment
  * Created by Max
  * on 01-May-17.
  */
-class QuakeFragment : HostedFragment<QuakeFragmentContract.IPresenter, QuakeFragmentContract.IHost>(),
-        QuakeFragmentContract.IView {
+class QuakeFragment : HostedFragment<QuakeFragmentContract.Presenter, QuakeFragmentContract.Host>(),
+        QuakeFragmentContract.View {
 
     private var binding: FragmentRecyclerBinding? = null
 
@@ -25,7 +25,7 @@ class QuakeFragment : HostedFragment<QuakeFragmentContract.IPresenter, QuakeFrag
         }
     }
 
-    override fun getPresenter(): QuakeFragmentContract.IPresenter {
+    override fun getPresenter(): QuakeFragmentContract.Presenter {
         return QuakeInjector().createPresenter(this)
     }
 

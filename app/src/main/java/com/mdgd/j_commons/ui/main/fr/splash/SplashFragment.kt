@@ -8,8 +8,8 @@ import com.mdgd.j_commons.fragment.HostedFragment
  * on 01-May-17.
  */
 
-class SplashFragment : HostedFragment<SplashFragmentContract.IPresenter, SplashFragmentContract.IHost>(),
-        SplashFragmentContract.IView {
+class SplashFragment : HostedFragment<SplashFragmentContract.Presenter, SplashFragmentContract.Host>(),
+        SplashFragmentContract.View {
 
     companion object {
 
@@ -18,7 +18,7 @@ class SplashFragment : HostedFragment<SplashFragmentContract.IPresenter, SplashF
         }
     }
 
-    override fun getPresenter(): SplashFragmentContract.IPresenter {
+    override fun getPresenter(): SplashFragmentContract.Presenter {
         return SplashFrInjector().createPresenter(this)
     }
 

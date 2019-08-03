@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -14,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.mdgd.commons.contract.fragment.FragmentContract;
-import com.mdgd.commons.contract.progress.IProgressView;
+import com.mdgd.commons.contract.progress.ProgressDecor;
 import com.mdgd.commons.utilities.PermissionsUtil;
 import com.mdgd.j_commons.progress.ProgressDialogWrapper;
 
@@ -23,12 +22,12 @@ import com.mdgd.j_commons.progress.ProgressDialogWrapper;
  * on 19/07/2017.
  */
 
-public abstract class HostedFragment<X extends FragmentContract.IPresenter, Y extends FragmentContract.IHost>
-        extends Fragment implements FragmentContract.IView {
+public abstract class HostedFragment<X extends FragmentContract.Presenter, Y extends FragmentContract.Host>
+        extends Fragment implements FragmentContract.View {
     protected X presenter;
 
     private boolean hasProgress = false;
-    private IProgressView progress;
+    private ProgressDecor progress;
     protected Y host;
 
     @Override
@@ -65,15 +64,15 @@ public abstract class HostedFragment<X extends FragmentContract.IPresenter, Y ex
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View v = inflater.inflate(getLayoutResId(), container, false);
+    public android.view.View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        final android.view.View v = inflater.inflate(getLayoutResId(), container, false);
         initViews(v);
         return v;
     }
 
     protected abstract int getLayoutResId();
 
-    protected void initViews(final View v) {
+    protected void initViews(final android.view.View v) {
     }
 
     @Override
@@ -106,7 +105,7 @@ public abstract class HostedFragment<X extends FragmentContract.IPresenter, Y ex
         }
     }
 
-    protected IProgressView createProgressView(String title, String message) {
+    protected ProgressDecor createProgressView(String title, String message) {
         return new ProgressDialogWrapper(getActivity(), title, message);
     }
 
@@ -116,7 +115,6 @@ public abstract class HostedFragment<X extends FragmentContract.IPresenter, Y ex
         if (progress == null) return;
         progress.dismiss();
         progress = null;
-
     }
 
     @Override
@@ -126,7 +124,7 @@ public abstract class HostedFragment<X extends FragmentContract.IPresenter, Y ex
     }
 
     @Override
-    public void showToast(int msgRes, String query) {
+    public void showToast(int msgRes, Object... query) {
         final Context ctx = getActivity();
         if (ctx != null) Toast.makeText(ctx, getString(msgRes, query), Toast.LENGTH_LONG).show();
     }
@@ -141,15 +139,4 @@ public abstract class HostedFragment<X extends FragmentContract.IPresenter, Y ex
     protected boolean hasPermissions(String... permissions) {
         return PermissionsUtil.checkPermissions(getActivity(), permissions);
     }
-
-    // @Override
-    // public void showSnack(int msgRes){
-    //     Snackbar.make(view, "Hello Android 7", Snackbar.LENGTH_LONG).show();
-    // }
-    // @Override
-    // public void showSnack(int msgRes, String query){
-    // }
-    // @Override
-    // public void showSnack(int msgRes, String query, int action){
-    // }
 }

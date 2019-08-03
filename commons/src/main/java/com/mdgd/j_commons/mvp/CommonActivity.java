@@ -9,8 +9,8 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.mdgd.commons.contract.mvp.ViewContract;
-import com.mdgd.commons.contract.progress.IProgressView;
+import com.mdgd.commons.contract.activity.ActivityContract;
+import com.mdgd.commons.contract.progress.ProgressDecor;
 import com.mdgd.commons.utilities.PermissionsUtil;
 import com.mdgd.j_commons.R;
 import com.mdgd.j_commons.progress.ProgressDialogWrapper;
@@ -19,22 +19,18 @@ import com.mdgd.j_commons.progress.ProgressDialogWrapper;
  * Created by Max
  * on 01/01/2018.
  */
+public abstract class CommonActivity<T extends ActivityContract.IPresenter> extends AppCompatActivity
+        implements ActivityContract.View {
 
-public abstract class CommonActivity<T extends ViewContract.IPresenter> extends AppCompatActivity
-        implements ViewContract.IView {
-    @Deprecated
-    protected boolean onForeground = false;
     private boolean hasProgress = true;
     protected T presenter;
-    private IProgressView progress;
-    private boolean saveInstanceStateCalled = false;
+    private ProgressDecor progress;
 
     protected abstract T getPresenter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        saveInstanceStateCalled = false;
         setContentView(getLayoutResId());
         presenter = getPresenter();
     }
@@ -46,29 +42,9 @@ public abstract class CommonActivity<T extends ViewContract.IPresenter> extends 
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        saveInstanceStateCalled = true;
-    }
-
-
-    @Override
     protected void onStart() {
         super.onStart();
         presenter.onAttach(this);
-        saveInstanceStateCalled = false;
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        onForeground = true;
-    }
-
-    @Override
-    protected void onPause() {
-        onForeground = false;
-        super.onPause();
     }
 
     @Override
@@ -117,7 +93,7 @@ public abstract class CommonActivity<T extends ViewContract.IPresenter> extends 
         }
     }
 
-    protected IProgressView createProgressView(String title, String message) {
+    protected ProgressDecor createProgressView(String title, String message) {
         return new ProgressDialogWrapper(this, title, message);
     }
 
@@ -134,7 +110,7 @@ public abstract class CommonActivity<T extends ViewContract.IPresenter> extends 
     }
 
     @Override
-    public void showToast(int msgRes, String query) {
+    public void showToast(int msgRes, Object... query) {
         Toast.makeText(this, getString(msgRes, query), Toast.LENGTH_SHORT).show();
     }
 
@@ -146,7 +122,6 @@ public abstract class CommonActivity<T extends ViewContract.IPresenter> extends 
 
     @Deprecated
     protected void setFragment(Fragment fragment, boolean addToStack, String backStackTag) {
-        if (saveInstanceStateCalled) return;
         getTransaction(addToStack, backStackTag).replace(getFragmentContainerId(), fragment).commit();
     }
 
@@ -170,7 +145,6 @@ public abstract class CommonActivity<T extends ViewContract.IPresenter> extends 
     }
 
     protected void addFragment(Fragment fragment, boolean addToStack, String backStackTag) {
-        if (saveInstanceStateCalled) return;
         if (fragment instanceof DialogFragment) {
             ((DialogFragment) fragment).show(getSupportFragmentManager(), backStackTag);
         } else
@@ -186,12 +160,10 @@ public abstract class CommonActivity<T extends ViewContract.IPresenter> extends 
     }
 
     protected void replaceFragment(Fragment fragment, boolean addToStack, String backStackTag) {
-        if (saveInstanceStateCalled) return;
         getTransaction(addToStack, backStackTag).replace(getFragmentContainerId(), fragment).commit();
     }
 
     protected void removeFragment(Fragment fragment, boolean addToStack, String backStackTag) {
-        if (saveInstanceStateCalled) return;
         getTransaction(addToStack, backStackTag).remove(fragment).commit();
     }
 

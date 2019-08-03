@@ -1,6 +1,6 @@
 package com.mdgd.j_commons.ui.main
 
-import com.mdgd.commons.contract.mvp.ViewContract
+import com.mdgd.commons.contract.activity.ActivityContract
 
 
 /**
@@ -10,7 +10,7 @@ import com.mdgd.commons.contract.mvp.ViewContract
 
 class MainScreenContract {
 
-    interface IPresenter : ViewContract.IPresenter<MainScreenContract.IView>
+    interface Presenter : ActivityContract.IPresenter<MainScreenContract.View>
 
-    interface IView : ViewContract.IView
+    interface View : ActivityContract.View
 }

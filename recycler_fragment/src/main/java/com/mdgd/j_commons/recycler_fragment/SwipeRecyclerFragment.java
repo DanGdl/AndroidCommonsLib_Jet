@@ -5,14 +5,14 @@ import android.view.View;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.mdgd.commons.contract.fragment.FragmentContract;
-import com.mdgd.commons.contract.progress.IProgressView;
+import com.mdgd.commons.contract.progress.ProgressDecor;
 
 /**
  * Created by Max
  * on 02/01/2018.
  */
 
-public abstract class SwipeRecyclerFragment<X extends FragmentContract.IPresenter, Y extends FragmentContract.IHost, ITEM>
+public abstract class SwipeRecyclerFragment<X extends FragmentContract.Presenter, Y extends FragmentContract.Host, ITEM>
         extends RecyclerFragment<X, Y, ITEM> implements SwipeRefreshLayout.OnRefreshListener {
 
     protected SwipeRefreshLayout swipe;
@@ -35,8 +35,8 @@ public abstract class SwipeRecyclerFragment<X extends FragmentContract.IPresente
     }
 
     @Override
-    protected IProgressView createProgressView(String title, String message) {
-        return new IProgressView() {
+    protected ProgressDecor createProgressView(String title, String message) {
+        return new ProgressDecor() {
             @Override
             public void show() {
                 if (swipe != null) swipe.setRefreshing(true);

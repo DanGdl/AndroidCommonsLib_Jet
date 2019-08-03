@@ -9,12 +9,12 @@ import com.mdgd.commons.contract.fragment.FragmentContract
 
 class QuakeFragmentContract {
 
-    interface IView : FragmentContract.IView {
+    interface View : FragmentContract.View {
     }
 
-    interface IHost : FragmentContract.IHost
+    interface Host : FragmentContract.Host
 
-    interface IPresenter : FragmentContract.IPresenter<IView> {
+    interface Presenter : FragmentContract.Presenter<View> {
 
     }
 }

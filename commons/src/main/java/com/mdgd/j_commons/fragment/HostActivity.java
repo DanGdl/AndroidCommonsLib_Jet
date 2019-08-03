@@ -5,8 +5,8 @@ import android.view.View;
 
 import androidx.fragment.app.Fragment;
 
+import com.mdgd.commons.contract.activity.ActivityContract;
 import com.mdgd.commons.contract.fragment.FragmentContract;
-import com.mdgd.commons.contract.mvp.ViewContract;
 import com.mdgd.j_commons.R;
 import com.mdgd.j_commons.mvp.CommonActivity;
 
@@ -17,7 +17,8 @@ import java.util.List;
  * on 25/07/2017.
  */
 
-public abstract class HostActivity<T extends ViewContract.IPresenter> extends CommonActivity<T> implements FragmentContract.IHost {
+public abstract class HostActivity<T extends ActivityContract.IPresenter> extends CommonActivity<T>
+        implements FragmentContract.Host {
 
     protected View container;
 

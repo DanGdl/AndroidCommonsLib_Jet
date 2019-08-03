@@ -8,11 +8,11 @@ import com.mdgd.j_commons.core.IComponentProvider
  * Created by Owner
  * on 13/05/2019.
  */
-class MainInjector : IInjector<MainScreenContract.IPresenter, MainScreenContract.IView> {
+class MainInjector : IInjector<MainScreenContract.Presenter, MainScreenContract.View> {
 
     private val provider: IComponentProvider = QuakesApp.instance!!.provider
 
-    override fun createPresenter(view: MainScreenContract.IView): MainScreenContract.IPresenter {
+    override fun createPresenter(view: MainScreenContract.View): MainScreenContract.Presenter {
         return MainPresenter()
     }
 }
