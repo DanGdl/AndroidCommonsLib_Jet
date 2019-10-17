@@ -15,10 +15,8 @@ class SearchParams(val query: String = "", val stDate: Long = DEF_TIME,
         get() = (TextUtils.isEmpty(query) && stDate == DEF_TIME
                 && TextUtils.isEmpty(stMag) && endDate == -DEF_TIME && TextUtils.isEmpty(endMag))
 
-    fun isRegular(): Boolean {
-        return (TextUtils.isEmpty(query) && stDate != DEF_TIME
+    fun isRegular(): Boolean = (TextUtils.isEmpty(query) && stDate != DEF_TIME
                 && TextUtils.isEmpty(stMag) && endDate == DEF_TIME && TextUtils.isEmpty(endMag))
-    }
 
     companion object {
         const val DEF_TIME = -1L
