@@ -44,6 +44,4 @@ class Quake {
         result = 31 * result + (title?.hashCode() ?: 0)
         return result
     }
-
-
 }
