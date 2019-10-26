@@ -26,6 +26,7 @@ dependencies {
     implementation project(':recycler')
     implementation project(':commons')
 
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     implementation "androidx.recyclerview:recyclerview:$androidx_recycler"
     implementation "androidx.appcompat:appcompat:$androidx"
 }

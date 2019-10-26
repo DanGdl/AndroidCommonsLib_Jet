@@ -25,11 +25,11 @@ class MainActivity : HostActivity<MainScreenContract.Presenter>(), MainScreenCon
         replaceFragment(EarthQuakesFragment.newInstance())
     }
 
-    override fun onRetainCustomNonConfigurationInstance(): Any {
-        return super.onRetainCustomNonConfigurationInstance()
-    }
-
-    override fun getLastNonConfigurationInstance(): Any? {
-        return super.getLastNonConfigurationInstance()
-    }
+//    override fun onRetainCustomNonConfigurationInstance(): Any? {
+//        return super.onRetainCustomNonConfigurationInstance()
+//    }
+//
+//    override fun getLastNonConfigurationInstance(): Any? {
+//        return super.getLastNonConfigurationInstance()
+//    }
 }

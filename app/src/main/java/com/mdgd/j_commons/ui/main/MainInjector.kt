@@ -13,6 +13,6 @@ class MainInjector : IInjector<MainScreenContract.Presenter, MainScreenContract.
     private val provider: IComponentProvider = QuakesApp.instance!!.provider
 
     override fun createPresenter(view: MainScreenContract.View): MainScreenContract.Presenter {
-        return MainPresenter()
+        return MainActivityPresenter()
     }
 }

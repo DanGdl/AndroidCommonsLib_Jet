@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 group = 'com.github.DanGdl'
 
@@ -21,4 +23,10 @@ android {
     }
 }
 
-dependencies {}
+dependencies {
+    // lifecycle
+    implementation "androidx.core:core:$support_ver"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
+}

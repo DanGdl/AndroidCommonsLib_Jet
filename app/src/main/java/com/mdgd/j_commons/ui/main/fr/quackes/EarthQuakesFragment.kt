@@ -52,17 +52,8 @@ class EarthQuakesFragment : SwipeRecyclerFragment<QuakesFragmentContract.Present
         adapter = getAdapter()
         recycler.adapter = adapter
         setHasProgress(true)
-        return binding?.root
-    }
 
-    override fun getAdapter(): CommonRecyclerAdapter<Quake> {
-        return EarthQuakesAdapter(activity as Context, this)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         binding?.swipeRefresh?.setColorSchemeColors(Color.RED, Color.BLUE, Color.YELLOW, Color.GREEN)
-        binding?.recycler?.layoutManager = LinearLayoutManager(activity)
 
         listener = object : EndlessScrollListener() {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
@@ -79,14 +70,18 @@ class EarthQuakesFragment : SwipeRecyclerFragment<QuakesFragmentContract.Present
         binding?.searchParams?.toTime?.setOnClickListener(this)
         binding?.searchParams?.toDate?.setOnClickListener(this)
 
-        binding?.searchParams?.root?.animate()?.translationYBy(TRANSLATE)?.setDuration(1)?.start()
-
-        binding?.swipeRefresh?.isRefreshing = true
+        return binding?.root
     }
 
-    override fun onStart() {
-        super.onStart()
-        onRefresh()
+    override fun getAdapter(): CommonRecyclerAdapter<Quake> {
+        return EarthQuakesAdapter(activity as Context, this)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        binding?.recycler?.layoutManager = LinearLayoutManager(activity)
+        binding?.searchParams?.root?.animate()?.translationYBy(TRANSLATE)?.setDuration(1)?.start()
+        binding?.swipeRefresh?.isRefreshing = true
     }
 
     fun onLoadMore() {
@@ -137,7 +132,7 @@ class EarthQuakesFragment : SwipeRecyclerFragment<QuakesFragmentContract.Present
         binding?.searchParams?.root?.animate()?.translationYBy(translateDist)?.setDuration(300)?.start()
     }
 
-    override fun setState(state: QuakesFragmentContract.State) {
+    override fun setState(state: State) {
         if(state.showError) showToast(R.string.shit, state.errorMessage)
 
         if(state.showProgress) showProgress(R.string.empty, R.string.wait_please)

@@ -15,35 +15,40 @@ class QuakesFragmentPresenter(private val repo: IRepo) :
             checkNewEarthQuakes()
             return
         }
-        view.setState(QuakesFragmentContract.State.showProgressState(true))
+        view.setState(State.showProgressState(true))
         repo.searchQuakes(searchParams, ICallback {
             if (it.isFail) {
-                view.setState(QuakesFragmentContract.State.showErrorState(true, it.error?.message))
+                view.setState(State.showErrorState(true, it.error?.message))
                 currentPage--
-            } else view.setState(QuakesFragmentContract.State.newDataState(currentPage, it.data!!))
+            } else view.setState(State.newDataState(currentPage, it.data!!))
         })
+    }
+
+    override fun subscribe(view: QuakesFragmentContract.View?) {
+        super.subscribe(view)
+        checkNewEarthQuakes()
     }
 
     override fun checkNewEarthQuakes() {
         currentPage = 1
-        view.setState(QuakesFragmentContract.State.showProgressState(true))
+        view.setState(State.showProgressState(true))
         repo.searchQuakes(SearchParams("", repo.getPrefs().lastUpdateDate), ICallback {
             if (it.isFail) {
-                view.setState(QuakesFragmentContract.State.showErrorState(true, it.error?.message))
+                view.setState(State.showErrorState(true, it.error?.message))
                 currentPage--
-            } else view.setState(QuakesFragmentContract.State.newDataState(currentPage, it.data!!))
+            } else view.setState(State.newDataState(currentPage, it.data!!))
         })
     }
 
     override fun getNextBulk(lastDate: Date) {
         currentPage++
         // add check is there more data in other cases
-        view.setState(QuakesFragmentContract.State.showProgressState(true))
+        view.setState(State.showProgressState(true))
         repo.getEarthquakesBeforeDate(SearchParams("", SearchParams.DEF_TIME, "", lastDate.time), ICallback {
             if (it.isFail) {
-                view.setState(QuakesFragmentContract.State.showErrorState(true, it.error?.message))
+                view.setState(State.showErrorState(true, it.error?.message))
                 currentPage--
-            } else view.setState(QuakesFragmentContract.State.newDataState(currentPage, it.data!!))
+            } else view.setState(State.newDataState(currentPage, it.data!!))
         })
     }
 }

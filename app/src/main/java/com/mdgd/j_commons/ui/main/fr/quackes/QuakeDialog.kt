@@ -30,7 +30,11 @@ class QuakeDialog internal constructor(context: Context) : Dialog(context) {
 
     fun setQuake(quake: Quake) {
         val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
-        val dateString = sdf.format(quake.date)
+        val dateString = if (quake.date == null) {
+            ""
+        } else {
+            sdf.format(quake.date)
+        }
 
         setTitle(dateString)
         mDetails?.text = context.resources.getString(R.string.quake_details, quake.magnitude, quake.title, quake.link)

@@ -53,13 +53,13 @@ public abstract class HostedFragment<X extends FragmentContract.Presenter, Y ext
     @Override
     public void onStart() {
         super.onStart();
-        presenter.onAttach(this);
+        presenter.subscribe(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        presenter.onDetach();
+        presenter.unsubscribe();
     }
 
     @Nullable

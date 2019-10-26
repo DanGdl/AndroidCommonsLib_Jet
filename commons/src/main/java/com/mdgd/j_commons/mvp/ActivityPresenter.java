@@ -8,6 +8,6 @@ import com.mdgd.commons.contract.mvp.BasicPresenter;
  * on 08/10/2017.
  */
 
-public abstract class Presenter<T extends ActivityContract.View> extends BasicPresenter<T>
+public abstract class ActivityPresenter<T extends ActivityContract.View> extends BasicPresenter<T>
         implements ActivityContract.IPresenter<T> {
 }

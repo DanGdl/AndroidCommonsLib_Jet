@@ -1,5 +1,6 @@
 package com.mdgd.j_commons.ui.main
 
+import androidx.lifecycle.LifecycleObserver
 import com.mdgd.commons.contract.activity.ActivityContract
 
 
@@ -10,7 +11,7 @@ import com.mdgd.commons.contract.activity.ActivityContract
 
 class MainScreenContract {
 
-    interface Presenter : ActivityContract.IPresenter<MainScreenContract.View>
+    interface Presenter : ActivityContract.IPresenter<View>, LifecycleObserver
 
     interface View : ActivityContract.View
 }

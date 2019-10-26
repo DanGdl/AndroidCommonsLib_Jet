@@ -33,6 +33,8 @@ public abstract class CommonActivity<T extends ActivityContract.IPresenter> exte
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
         presenter = getPresenter();
+        presenter.subscribe(this);
+        getLifecycle().addObserver(presenter);
     }
 
     protected abstract int getLayoutResId();
@@ -42,16 +44,17 @@ public abstract class CommonActivity<T extends ActivityContract.IPresenter> exte
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        presenter.onAttach(this);
+    protected void onStop() {
+        hideProgress();
+
+        super.onStop();
     }
 
     @Override
-    protected void onStop() {
-        hideProgress();
-        presenter.onDetach();
-        super.onStop();
+    protected void onDestroy() {
+        presenter.unsubscribe();
+        getLifecycle().removeObserver(presenter);
+        super.onDestroy();
     }
 
     @TargetApi(16)
