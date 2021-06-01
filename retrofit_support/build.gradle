@@ -23,6 +23,6 @@ android {
 
 dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_ver"
-    implementation "androidx.annotation:annotation:$androidx"
+    implementation "androidx.annotation:annotation:$androidx_annotation"
     implementation project(path: ':result')
 }

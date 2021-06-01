@@ -23,5 +23,5 @@ android {
 
 dependencies {
     implementation project(':utilities')
-    implementation "androidx.annotation:annotation:$androidx"
+    implementation "androidx.annotation:annotation:$androidx_annotation"
 }

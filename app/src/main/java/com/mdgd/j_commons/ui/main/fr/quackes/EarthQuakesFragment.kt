@@ -118,11 +118,11 @@ class EarthQuakesFragment : SwipeRecyclerFragment<QuakesFragmentContract.Present
                     0, 0, true).show()
         } else if (id == R.id.fromDate) {
             val calendar = Calendar.getInstance()
-            DatePickerDialog(activity!!, { _: DatePicker, y: Int, m: Int, d: Int -> binding?.searchParams?.fromDate?.text = String.format(Locale.getDefault(), "%1$2d.%2$2d.%3$4d", d, m, y) },
+            DatePickerDialog(requireActivity(), { _: DatePicker, y: Int, m: Int, d: Int -> binding?.searchParams?.fromDate?.text = String.format(Locale.getDefault(), "%1$2d.%2$2d.%3$4d", d, m, y) },
                     calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show()
         } else if (id == R.id.toDate) {
             val calendar = Calendar.getInstance()
-            DatePickerDialog(activity!!, { _: DatePicker, y: Int, m: Int, d: Int -> binding?.searchParams?.toDate?.text = String.format(Locale.getDefault(), "%1$2d.%2$2d.%3$4d", d, m, y) },
+            DatePickerDialog(requireActivity(), { _: DatePicker, y: Int, m: Int, d: Int -> binding?.searchParams?.toDate?.text = String.format(Locale.getDefault(), "%1$2d.%2$2d.%3$4d", d, m, y) },
                     calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show()
         }
     }
@@ -133,17 +133,24 @@ class EarthQuakesFragment : SwipeRecyclerFragment<QuakesFragmentContract.Present
     }
 
     override fun setState(state: State) {
-        if(state.showError) showToast(R.string.shit, state.errorMessage)
+        if (state.showError && state.errorMessage != null) {
+            showToast(R.string.shit, state.errorMessage)
+        }
 
-        if(state.showProgress) showProgress(R.string.empty, R.string.wait_please)
-        else hideProgress()
+        if (state.showProgress) {
+            showProgress(R.string.empty, R.string.wait_please)
+        } else {
+            hideProgress()
+        }
 
         if (state.updateData) {
             binding?.toolbarInc?.toolbarIcon?.requestFocus()
             if (state.isFirstPage) {
                 listener?.resetState()
                 adapter?.setItems(state.data)
-            } else adapter?.addItems(state.data)
+            } else {
+                adapter?.addItems(state.data)
+            }
         }
     }
 }
